@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   def new
-    @book = book.new
+    @book = Book.new
+    @user = current_user
   end
 
   def index
-    # 変数の定義
-    
-    
+    @books=Book.all
+    @user = current_user
   end
 
   def show
