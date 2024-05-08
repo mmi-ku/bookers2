@@ -7,4 +7,9 @@ class UserController < ApplicationController
 
   def view
   end
+  
+  def index
+  @user = User.all
+  end
+  
 end

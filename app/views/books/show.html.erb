@@ -1,10 +1,12 @@
  <h1>Books</h1>
-    <div>
-  <!--<%= image_tag @post_image.get_image %>-->これをどうするか考える。ユーザーイメージを表示するために
-  <p>Title：<%= @book.book_titile %></p>
+<div>
+  
+  <%= image_tag @user.get_image %>
+  <p>Title：<%= @book.book_title %></p>
   <p>Opinion：<%= @book.book_review %></p>
   <p><%= @book.user.name %></p>
-  </div>
+  
+</div>
  
   <% if @book.user == current_user %>
     <%= link_to "delete", book_path(@book), method: :delete %>
