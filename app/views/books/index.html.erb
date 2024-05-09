@@ -1,16 +1,30 @@
-<h1>User info</h1>
-  <%= form_with model: @user do |f| %>
-    <h4>name</h4>
-    <%= f.text_field :name %>
-    <h4>introduction</h4>
-    <%= f.text_area :introduction %>
-  <% end %>
-  これ定義しなくてよい？current userになっているから、以下は消してよいのか。？？？？？？？
-   <% if @user1 == current_user %>
+<h2>User info</h2>
+  <!--テーブルタグ使う-->
+<table class="table">
+  <tr> 
+    <th>name</th>
+    <%= @user.name %>
+  </tr>
+   
+  <tr>
+    <th>introduction</th>
+    <%= @user.introduction %>
+  </tr>
+</table>
+  
     <p><%= link_to "編集の人ボタン追加する", edit_user_path(@user) %></p>
-  <% end %>
+    
+<h2>New book</h2>
 
-<h1>New book</h1>
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <%= form_with model: @book do |f| %>
     <h4>Title</h4>
     <%= f.text_field :book_title %>
@@ -18,9 +32,9 @@
     <%= f.text_area :book_review %>
     <%= f.submit 'Create Book' %>
   <% end %>
-
-<h1>Books</h1>
-
+  
+<h2>Books</h2>
     <% @books.each do |book| %>
+    投稿されたブックが一覧で表示されるようにしなければならない。
   <% end %>
 
