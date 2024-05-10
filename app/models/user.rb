@@ -6,6 +6,8 @@ class User < ApplicationRecord
          
   has_many :book, dependent: :destroy  
   has_one_attached :image
+  validates :name, presence: true
+  validates :introduction, presence: true
   
   def get_image
     unless image.attached?
