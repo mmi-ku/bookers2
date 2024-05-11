@@ -1,18 +1,19 @@
+<%= render 'list', {book: @book_new, user: @user} %>
+
 <div> <%= flash[:notice] %></div>
 
  
 <h1>Books</h1>
-
 <div>
-  
   <%= image_tag @user.get_image %>
   <p>Title：<%= @book.book_title %></p>
   <p>Opinion：<%= @book.book_review %></p>
   <p><%= @book.user.name %></p>
-  
 </div>
  
-  <% if @book.user == current_user %>
+ <% if @book.user == current_user %>
     <%= link_to "edit", edit_book_path(@book) %>
     <%= link_to "delete", book_path(@book), method: :delete %>
-  <% end %>
+ <% end %>
+  
+ 

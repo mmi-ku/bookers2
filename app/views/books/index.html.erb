@@ -1,40 +1,9 @@
-<h2>User info</h2>
-  <!--テーブルタグ使う-->
-<table class="table">
-  <tr> 
-    <th>name</th>
-    <th><%= @user.name %></th>
-  </tr>
-   
-  <tr>
-    <th>introduction</th>
-    <th><%= @user.introduction %></th>
-  </tr>
-</table>
-  
-    <p><%= link_to "編集の人ボタン追加する", edit_user_path(@user) %></p>
-    
-<h2>New book</h2>
-
-  <% if @book.errors.any? %>
-    <%= @book.errors.count %>errors prohibited this obj from being saved:
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-    <%= f.text_field :book_title %>
-    <h4>Opinion</h4>
-    <%= f.text_area :book_review %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
+<%= render 'list', {book: @book_new, user: @user} %>
   
 <h2>Books</h2>
     <% @books.each do |book| %>
-    投稿されたブックが一覧で表示されるようにしなければならない。
-  <% end %>
+    <p><%= book.book_title %></p>
+    <p><%= book.book_review %></p>
+    <% end %>
+
 

@@ -1,20 +1,24 @@
 class UsersController < ApplicationController
+   before_action :is_matching_login_user, only: [:edit, :update]
+   
   def show
+    @user = User.find(params[:id])
+    @books = @user.books
+    @book_new = Book.new
   end
 
   def edit
     @user = User.find(params[:id])
-    if @user == current_user
-    else
-    redirect_to user_path(@user)
-    end
-  end
-
-  def view
+    # if @user == current_user
+    # else
+    # redirect_to user_path(@user)
+    # end
   end
 
   def index
-  @user = User.all
+  @book_new = Book.new
+  @user = User.find(params[:id])
+  @users = User.all
   end
 
   def update
@@ -24,7 +28,6 @@ class UsersController < ApplicationController
       redirect_to users_path(@user)
     else
       render :edit
-      # renderの後にedit_user_pathでは、なぜだめなのか？？？？？？？？
     end
   end
 
@@ -32,6 +35,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+  
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(@user)
+    end
   end
 
 end
