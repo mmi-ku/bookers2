@@ -5,10 +5,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book_new = Book.new
+    # @book = @user.book　ここをどうするか考える！！！！！
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     # if @user == current_user
     # else
     # redirect_to user_path(@user)
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 
   def index
   @book_new = Book.new
-  @user = User.find(params[:id])
+  @user = current_user
   @users = User.all
   end
 
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to users_path(@user)
+      redirect_to users_path
     else
       render :edit
     end
@@ -38,8 +39,8 @@ class UsersController < ApplicationController
   end
   
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
       redirect_to user_path(@user)
     end
   end
