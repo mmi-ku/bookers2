@@ -1,19 +1,26 @@
-<%= render 'list', {book: @book_new, user: @user} %>
-
 <div> <%= flash[:notice] %></div>
 
- 
-<h1>Books</h1>
-<div>
-  <%= image_tag @user.get_image %>
-  <p>Title：<%= @book.book_title %></p>
-  <p>Opinion：<%= @book.book_review %></p>
-  <p><%= @book.user.name %></p>
+<div class="container">
+    <div class="row">
+        <%= render 'list', {book: @book_new, user: @user} %>
+        <div class="col-md-8 offset-md-1"> 
+            <h1>Books</h1>
+            <table class="table">
+                <tbody>
+                    <tr> 
+                        <td><%= @book.user.name %></td>
+                        <td><%= image_tag @user.get_profile_image %></td>
+                        
+                        <td>Title：<%= @book.book_title %></td>
+                        <td>Opinion：<%= @book.book_review %></td>
+                        
+                        <% if @book.user == current_user %>
+                            <td><%= link_to "edit", edit_book_path(@book) %></td>
+                            <td><%= link_to "delete", book_path(@book), method: :delete %></td>
+                        <% end %>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
 </div>
- 
- <% if @book.user == current_user %>
-    <%= link_to "edit", edit_book_path(@book) %>
-    <%= link_to "delete", book_path(@book), method: :delete %>
- <% end %>
-  
- 

@@ -1,9 +1,22 @@
-<%= render 'list', {book: @book_new, user: @user} %>
-  
-<h2>Books</h2>
-    <% @books.each do |book| %>
-    <p><%= book.book_title %></p>
-    <p><%= book.book_review %></p>
-    <% end %>
-
-
+<div class="row">
+    <%= render 'list', {book: @book_new, user: @user} %>
+    
+    <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+            <table class="table table-hover table-inverse">
+                <thead>
+                    <tr>
+                     <% @books.each do |book| %>
+                     <th><%= book.book_title %></th>
+                     <th><%= book.book_review %></th>
+                     <% end %>
+                     <th colspan="3"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= image_tag @user.get_profile_image %></td>
+                    </tr>
+                </tbody>
+    </div>
+</div>

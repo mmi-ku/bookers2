@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book_new = Book.new
-    # @book = @user.book　ここをどうするか考える！！！！！
+    # ここをどうするか考える！！！！！
   end
 
   def edit
