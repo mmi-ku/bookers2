@@ -1,5 +1,4 @@
-<div class="container px-5 px-sm-0">
-    <div class="col-md-3">
+
       <h2>User info</h2>
         <%= image_tag @user.get_profile_image %>
         <table class="table">
@@ -31,13 +30,18 @@
         <% end %>
         
         <%= form_with model: book do |f| %>
+        <div>
           <h4>Title</h4>
           <%= f.text_field :book_title %>
+        </div>
+        <div>
           <h4>Opinion</h4>
           <%= f.text_area :book_review %>
-          
-          <%= f.submit 'Create Book' %>
+        </div>  
+        <br>
+        <div>
+          <%= f.submit 'Create Book', class: "btn btn-success" %>
+        </div> 
         <% end %>
-    </div>
-</div>
+    
   
