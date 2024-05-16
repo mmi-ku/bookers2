@@ -19,9 +19,12 @@
                         <tbody>
                             <% @books.each do |book| %>
                             <tr>
-                                <td><%= image_tag @user.get_profile_image %></td>
-                                <td><%= link_to book.book_title, book_path(book) %></td>
-                                <td><%= book.book_review %></td>
+                                <td><%= link_to user_path(book.user) do %>
+                                <%= image_tag book.user.get_profile_image %>
+                                <% end %>
+                                </td>
+                                <td><%= link_to book.title, book_path(book) %></td>
+                                <td><%= book.body %></td>
                             </tr>
                             <% end %>
                         </tbody>

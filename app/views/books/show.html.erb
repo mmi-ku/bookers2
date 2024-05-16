@@ -11,16 +11,18 @@
                         <tbody>
                             <tr>
 
-                                <td><%= image_tag @user.get_profile_image %>
+                                <td><%= link_to user_path(@user) do %>
+                                    <%= image_tag @user.get_profile_image %>
+                                    <% end %>
                                     <br>
-                                    <%= @book.user.name %>
+                                    <%= link_to @book.user.name, user_path(@user) %>
                                 </td>
-                                <td><%= link_to @book.book_title, book_path(@book) %></td>
-                                <td><%= @book.book_review %></td>
+                                <td><%= link_to @book.title, book_path(@book) %></td>
+                                <td><%= @book.body %></td>
 
                                 <% if @book.user == current_user %>
-                                    <td><%= link_to "edit", edit_book_path(@book) %></td>
-                                    <td><%= link_to "delete", book_path(@book), method: :delete %></td>
+                                    <td><%= link_to "Edit", edit_book_path(@book) %></td>
+                                    <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
                                 <% end %>
                             </tr>
                         </tbody>
