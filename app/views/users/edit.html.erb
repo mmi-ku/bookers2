@@ -13,7 +13,7 @@
     <h2>User info</h2>
       <%= form_with model: @user do |f| %>
         <div> <label for="inputName">Name</label>
-          <div><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%></div>
+          <div><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name", class: "form-control name" %></div>
         </div>
          
         <div> 
@@ -23,7 +23,7 @@
          
         <div>
           <label for="inputName">Introduction</label>
-          <div><%= f.text_field :introduction, autofocus: true, id:"EditIntroduction", placeholder:"Introduction"%></div>
+          <div><%= f.text_field :introduction, autofocus: true, id:"EditIntroduction", placeholder:"Introduction", class: "form-control" %></div>
         </div>
           <br>
         <div>

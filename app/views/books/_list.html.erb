@@ -32,12 +32,12 @@
         <%= form_with model: book do |f| %>
         <div>
           <label for="book_title">Title</label>
-          <div><%= f.text_field :title %></div>
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
         
         <div>
           <label for="book_opinion">Opinion</label>
-          <div><%= f.text_area :body %></div>
+          <%= f.text_area :body, class: 'form-control' %> 
         </div> 
         
         <br>
